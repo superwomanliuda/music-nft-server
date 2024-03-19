@@ -1,6 +1,8 @@
 const express = require("express");
 require("dotenv").config();
 const Moralis = require("moralis").default;
+const webhookRouter = require("./api/webhook");
+
 const app = express();
 
 const MORALIS_API_KEY = process.env.MORALIS_API_KEY; // 保密处理，不要硬编码
@@ -12,6 +14,8 @@ Moralis.start({ apiKey: MORALIS_API_KEY });
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/api/webhook", webhookRouter);
 
 // 设置其他路由来管理Stream，例如创建Stream的路由
 app.post("/create-stream", async (req, res) => {
