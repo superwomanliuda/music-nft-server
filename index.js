@@ -4,7 +4,6 @@ const Moralis = require("moralis").default;
 const webhookRouter = require("./api/webhook");
 
 const app = express();
-app.use(express.json());
 
 const MORALIS_API_KEY = process.env.MORALIS_API_KEY; // 保密处理，不要硬编码
 const AlbumFactoryABI = require("./abi/AlbumFactory.json");
