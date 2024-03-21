@@ -24,9 +24,8 @@ app.post("/create-stream", async (req, res) => {
     tag: "album_created",
     chains: ["0x13881"],
     includeNativeTxs: true,
-    abi: AlbumFactoryABI,
-    allAddresses: true,
-    topic0: ["AlbumCreated(address,address)"],
+    //abi: AlbumFactoryABI,
+    //topic0: ["AlbumCreated(address,address)"],
   };
 
   try {
