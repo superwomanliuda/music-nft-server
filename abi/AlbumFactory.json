@@ -29,6 +29,12 @@
         "internalType": "address",
         "name": "owner",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "albumIPFSUri",
+        "type": "string"
       }
     ],
     "name": "AlbumCreated",
