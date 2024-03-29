@@ -1,12 +1,9 @@
-const express = require("express");
 //require("dotenv").config();
-const Moralis = require("moralis").default;
-const webhookRouter = require("./api/webhook");
+const express = require("express");
 
 const app = express();
 app.use(express.json());
 
-const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
 const AlbumFactoryABI = require("./abi/AlbumFactory.json");
 
 const admin = require("firebase-admin");
@@ -19,7 +16,10 @@ admin.initializeApp({
     "https://music-nft-server-b8ff3-default-rtdb.asia-southeast1.firebasedatabase.app/",
 });
 
-// Moralis 初始化
+const Moralis = require("moralis").default;
+const webhookRouter = require("./api/webhook");
+
+const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
 Moralis.start({ apiKey: MORALIS_API_KEY });
 
 app.get("/", (req, res) => {
