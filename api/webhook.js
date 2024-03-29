@@ -6,7 +6,7 @@ const db = admin.database();
 router.post("/", (req, res) => {
   console.log("Received webhook:", req.body);
 
-  if (req.body && req.body.logs && req.body.logs.length > 0) {
+  if (req.body.confirmed && req.body.logs && req.body.logs.length > 0) {
     const log = req.body.logs[0];
     const albumAddress = log.address;
     const ownerAddress = `0x${log.topic2.slice(-40)}`; // 取 topic2 的最后40个字符，转换为地址
