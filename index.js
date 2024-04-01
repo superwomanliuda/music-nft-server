@@ -1,7 +1,13 @@
 //require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+// CORS配置
+const corsOptions = {
+  origin: "http://localhost:3000", // 前端托管之后记得修改此处
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const AlbumFactoryABI = require("./abi/AlbumFactory.json");
@@ -27,6 +33,20 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/webhook", webhookRouter);
+
+app.post("/generateToken", (req, res) => {
+  const userEthAddress = req.body.walletAddress;
+  admin
+    .auth()
+    .createCustomToken(userEthAddress)
+    .then((customToken) => {
+      res.json({ token: customToken });
+    })
+    .catch((error) => {
+      console.log("Error creating custom token:", error);
+      res.status(500).send("Error creating custom token");
+    });
+});
 
 /*app.post("/create-stream", async (req, res) => {
   const streamDetails = {
