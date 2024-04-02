@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
 
   if (req.body.confirmed && req.body.logs && req.body.logs.length > 0) {
     const log = req.body.logs[0];
-    const albumAddress = log.address;
+    const albumAddress = `0x${log.topic1.slice(-40)}`;
     const ownerAddress = `0x${log.topic2.slice(-40)}`; // 取 topic2 的最后40个字符，转换为地址
     const ipfsUri = parseIPFSUri(log.data); // 使用 parseIPFSUri() 函数解析 IPFS URI
 
