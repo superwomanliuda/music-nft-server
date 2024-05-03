@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 // CORS配置
 const corsOptions = {
-  origin: "http://localhost:3000", // 前端托管之后记得修改此处
+  origin: "https://liuda-music-nft.web.app", // 前端托管之后记得修改此处
 };
 app.use(cors(corsOptions));
 app.use(express.json());
